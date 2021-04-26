@@ -1,0 +1,241 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2021.04.23 10:19:52 =~=~=~=~=~=~=~=~=~=~=~=
+[K[root@ftc8-3s1 ~]# ibrix_nic -l
+HOST                          IFNAME   TYPE     STATE                   IP_ADDRESS  MAC_ADDRESS        BACKUP_HOST  BACKUP_IF  VLAN_TAG  LINKMON
+----------------------------  -------  -------  ----------------------  ----------  -----------------  -----------  ---------  --------  -------
+ftc8-3s1                      bond0    Cluster  Up, LinkUp              10.8.3.1    6c:3b:e5:c1:53:b8                                    No     
+ftc8-3s2                      bond0    Cluster  Up, LinkUp              10.8.3.2    6c:3b:e5:c1:60:00                                    No     
+ftc8-3s1 [Active FM Nonedit]  bond0:0  Cluster  Up, LinkUp (Active FM)  10.8.3.109                                                       No     
+]0;root@ftc8-3s1:~[root@ftc8-3s1 ~]# ibrix_health -l
+  Overall Health Checker Results - PASSED
+  =======================================
+  Host Summary Results
+  ====================
+  Host      Result  Type    State  Network   Last Update
+  --------  ------  ------  -----  --------  -----------
+  ftc8-3s1  PASSED  Server  Up     10.8.3.1  Fri Apr 23 04:23:40 UTC 2021
+  ftc8-3s2  PASSED  Server  Up     10.8.3.2  Fri Apr 23 04:23:42 UTC 2021
+]0;root@ftc8-3s1:~[root@ftc8-3s1 ~]# ibrix[K[K[K[K[Khpsp_fmt -fr
+Since no category argument is specified, operation will be performed on server components...
+Based on the configuration, Flash recommendation may take 5 minutes.
+In progress...  |/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/     <<< Completed >>>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Device            Device ID            Active FW    Qualified    Proposed   Severity    Reboot Reqd. Device Information      Parent Device ID         
+                                       Version      FW Version   Action                 on Flash                                                      
+---------------------------------------------------------------------------------------------------------------------------------------------------
+BIOS              USE303TCNE           P70          P70          NONE       NONE        Yes          N/A                     N/A                      
+                                       (02/10/2014) (02/10/2014)                                                                                      
+ILO4              ILOUSE303TCNE        2.77         2.77         NONE       NONE        No           N/A                     N/A                      
+NIC               eth0                 1.38         1.38         NONE       NONE        Yes          331FLR                  N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+Power_Mgmt_Ctlr   N/A                  3.3          3.3          NONE       NONE        Yes          N/A                     N/A                      
+SERVER_HDD        PWHVDHBD             HPDA         HPDA         NONE       NONE        Yes          PORT:1I BOX:2 BAY:1     Ctlr:001438021117410     
+SERVER_HDD        PWHXAXED             HPDA         HPDA         NONE       NONE        Yes          PORT:1I BOX:2 BAY:2     Ctlr:001438021117410     
+Smart_Array_Ctlr  001438021117410      5.42         5.42         NONE       NONE        Yes          P420i                   Serv:USE303TCNE          
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+]0;root@ftc8-3s1:~[root@ftc8-3s1 ~]# cd /opt/hp/platform/fmt/etc/
+]0;root@ftc8-3s1:/opt/hp/platform/fmt/etc[root@ftc8-3s1 etc]# ls
+[00m[00;32mCP018809.scexe[00m  [00;32mCP020193.scexe[00m  [00;32mCP020308.scexe[00m  [00;32mCP022314.scexe[00m  [00;32mCP022569.scexe[00m  [00;32mCP022978.scexe[00m  [00;32mCP023113.scexe[00m  [00mnicfwupg.log[00m
+[00;32mCP018838.scexe[00m  [00;32mCP020205.scexe[00m  [00;32mCP021615.scexe[00m  [00;32mCP022316.scexe[00m  [00;32mCP022891.scexe[00m  [00;32mCP023060.scexe[00m  [00;32mCP046020.scexe[00m  [00mRepository.xml[00m
+[m]0;root@ftc8-3s1:/opt/hp/platform/fmt/etc[root@ftc8-3s1 etc]# ls
+[00m[00;32mCP018809.scexe[00m  [00;32mCP020193.scexe[00m  [00;32mCP020308.scexe[00m  [00;32mCP022314.scexe[00m  [00;32mCP022569.scexe[00m  [00;32mCP022978.scexe[00m  [00;32mCP023113.scexe[00m  [00;32mCP046020.scexe[00m  [00mRepository.xml[00m
+[00;32mCP018838.scexe[00m  [00;32mCP020205.scexe[00m  [00;32mCP021615.scexe[00m  [00;32mCP022316.scexe[00m  [00;32mCP022891.scexe[00m  [00;32mCP023060.scexe[00m  [00;32mCP023646.scexe[00m  [00mnicfwupg.log[00m
+[m]0;root@ftc8-3s1:/opt/hp/platform/fmt/etc[root@ftc8-3s1 etc]# vi rE[K[KRepository.xml 
+[?1049h[?1h=[1;52r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[52;1H"Repository.xml" "Repository.xml" 299L, 12839C[1;1H<?xml version="1.0" encoding="UTF-8" standalone="no"?><ns2:repository xmlns:ns2="http://www.example.org/RepositoryXMLSchema" xmlns:ns0="http://www.example.org/RepositoryXMLSchemm[2;1Ha">[34m^M[m
+    <recipeVersion>9.05.20210315034804</recipeVersion>[34m^M[m
+    <minToolVersion>6.00</minToolVersion>[34m^M[m
+    <version>1.0.4</version>[34m^M[m
+    <productName>G8 8200</productName>[34m^M[m
+    <filePath>/etc/opt/hp/platform/firmware/Repository.xml</filePath>[34m^M[m
+    <flashOnBoot>false</flashOnBoot>[34m^M[m
+    <openState>false</openState>[34m^M[m
+<Server>[34m^M[m[11;9H<Component>[34m^M[m[12;9H<filename>CP046020.scexe</filename>[34m^M[m[13;9H<shortName>ILO4</shortName>[34m^M[m[14;9H<name>Integrated Lights-Out (iLO) 4</name>[34m^M[m[15;9H<version>2.77</version>[34m^M[m[16;9H<minFwVersion>2.77</minFwVersion>[34m^M[m[17;9H<sharedComponent>false</sharedComponent>[34m^M[m[18;13H<discoverDuration>1</discoverDuration>[34m^M[m[19;9H<flashDuration>10</flashDuration>[34m^M[m[20;9H<flashActionSeverity>MANDATORY</flashActionSeverity>[34m^M[m[21;9H<coordinatedReboot>false</coordinatedReboot>[34m^M[m[22;9H<requiresLock>false</requiresLock>[34m^M[m[23;9H<requiresReboot>false</requiresReboot>[34m^M[m[24;9H<dependentDrivers>[34m^M[m[25;13H<driversListType>ALL</driversListType>[34m^M[m[26;13H<driver>[34m^M[m[27;17H<name>hpilo</name>[34m^M[m[28;13H</driver>[34m^M[m[29;9H</dependentDrivers>[34m^M[m[30;9H<componentClass>ILO</componentClass>[34m^M[m
+    </Component>[34m^M[m
+    <Component>[34m^M[m[33;9H<filename>CP022891.scexe</filename>[34m^M[m[34;9H<name>BIOS</name>[34m^M[m[35;9H<shortName>BIOS</shortName>[34m^M[m[36;9H<version>P70 02/10/2014</version> <!-- version is in the format MM/DD/YYYY -->[34m^M[m[37;9H<minFwVersion>P70 02/10/2014</minFwVersion>[34m^M[m[38;9H<sharedComponent>false</sharedComponent>[34m^M[m[39;9H<flashDuration>5</flashDuration>[34m^M[m[40;9H<flashActionSeverity>MANDATORY</flashActionSeverity>[34m^M[m[41;13H<discoverDuration>1</discoverDuration>[34m^M[m[42;9H<coordinatedReboot>false</coordinatedReboot>[34m^M[m[43;9H<requiresLock>false</requiresLock>[34m^M[m[44;9H<requiresReboot>true</requiresReboot>[34m^M[m[45;9H<componentClass>BIOS</componentClass>[34m^M[m
+    </Component>[34m^M[m
+    <Component>[34m^M[m[48;9H<filename>CP021615.scexe</filename>[34m^M[m[49;9H<name>Power Management Controller</name>[34m^M[m[50;9H<shortName>Power_Mgmt_Ctlr</shortName>[34m^M[m[51;9H<version>3.3</version>[34m^M[1;1H[?12l[?25h
+
+
+
+
+
+
+
+
+[11;8H
+
+
+
+[m        <version>2.77</ve[?25l[52;1H[1m-- INSERT --[m[52;13H[K[15;21H[?12l[?25h[?25l</version>[34m^M[m[15;33H[K[15;20H[?12l[?25h[?25l</version>[34m^M[m[15;32H[K[15;20H[?12l[?25h[?25l</version>[34m^M[m[15;31H[K[15;19H[?12l[?25h[?25l</version>[34m^M[m[15;30H[K[15;18H[?12l[?25h[?25l</version>[34m^M[m[15;29H[K[15;17H[?12l[?25h[?25l2</version>[34m^M[15;18H[?12l[?25h[?25l[m</version>[34m^M[m[15;29H[K[15;17H[?12l[?25h[?25l1</version>[34m^M[15;18H[?12l[?25h[?25l[m.</version>[34m^M[15;19H[?12l[?25h[?25l[m5</version>[34m^M[15;20H[?12l[?25h[?25l[m1</version>[34m^M[15;21H[?12l[?25h[?25l[m</version>[34m^M[m[15;32H[K[15;20H[?12l[?25h[?25l</version>[34m^M[m[15;31H[K[15;19H[?12l[?25h[?25l</version>[34m^M[m[15;30H[K[15;18H[?12l[?25h[?25l</version>[34m^M[m[15;29H[K[15;17H[?12l[?25h[?25l></version>[34m^M[15;18H[?12l[?25h[?25l[m1</version>[34m^M[15;19H[?12l[?25h[?25l[m.</version>[34m^M[15;20H[?12l[?25h[?25l[m5</version>[34m^M[15;21H[?12l[?25h[?25l[m1</version>[34m^M[15;22H[?12l[?25h[16;22H[m>2[?25l77</minFwVersion>[34m^M[m[16;43H[K[16;24H[?12l[?25h[?25l7</minFwVersion>[34m^M[m[16;42H[K[16;24H[?12l[?25h7[?25l</minFwVersion>[34m^M[m[16;41H[K[16;24H[?12l[?25h[?25l</minFwVersion>[34m^M[m[16;40H[K[16;23H[?12l[?25h[?25l1</minFwVersion>[34m^M[16;24H[?12l[?25h[?25l[m.</minFwVersion>[34m^M[16;25H[?12l[?25h[?25l[m5</minFwVersion>[34m^M[16;26H[?12l[?25h[?25l[m1</minFwVersion>[34m^M[16;27H[?12l[?25h[15;27H[14;27H[13;27H[12;27H[11;22H[12;27H[m.scexe</e[?25l</filename>[34m^M[m[12;45H[K[12;32H[?12l[?25h[?25l</filename>[34m^M[m[12;44H[K[12;31H[?12l[?25h[?25l</filename>[34m^M[m[12;43H[K[12;30H[?12l[?25h[?25l</filename>[34m^M[m[12;42H[K[12;29H[?12l[?25h[?25l</filename>[34m^M[m[12;41H[K[12;28H[?12l[?25h[?25l</filename>[34m^M[m[12;38H[K[12;25H[?12l[?25h[?25l</filename>[34m^M[m[12;37H[K[12;24H[?12l[?25h[?25l</filename>[34m^M[m[12;36H[K[12;23H[?12l[?25h[?25l</filename>[34m^M[m[12;35H[K[12;22H[?12l[?25h[?25l</filename>[34m^M[m[12;34H[K[12;21H[?12l[?25h[?25l</filename>[34m^M[m[12;33H[K[12;20H[?12l[?25h[?25l</filename>[34m^M[m[12;32H[K[12;19H[?12l[?25h[?25l</filename>[34m^M[m[12;31H[K[12;18H[?12l[?25h[?25lCP023646.scexe</filename>[34m^M[12;32H[?12l[?25h[me[?25l>CP023646.scexe</filename>[34m^M[12;19H[?12l[?25h[m[52;1H[K[12;18H[?25l[?12l[?25h[?25l[52;1H:[?12l[?25hqw\[?25l:qw[52;4H[K[52;4H[?12l[?25h[?25l:q[52;3H[K[52;3H[?12l[?25h[?25l:[52;2H[K[52;2H[?12l[?25hwq![?25l"Repository.xml" "Repository.xml" 299L, 12839C written
+[?1l>[?12l[?25h[?1049l]0;root@ftc8-3s1:/opt/hp/platform/fmt/etc[root@ftc8-3s1 etc]# hpsp_fmt -fr
+Since no category argument is specified, operation will be performed on server components...
+Based on the configuration, Flash recommendation may take 5 minutes.
+In progress...  |/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|     <<< Completed >>>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Device            Device ID            Active FW    Qualified    Proposed   Severity    Reboot Reqd. Device Information      Parent Device ID         
+                                       Version      FW Version   Action                 on Flash                                                      
+---------------------------------------------------------------------------------------------------------------------------------------------------
+BIOS              USE303TCNE           P70          P70          NONE       NONE        Yes          N/A                     N/A                      
+                                       (02/10/2014) (02/10/2014)                                                                                      
+ILO4              ILOUSE303TCNE        2.77         1.51         DOWNGRADE  MANDATORY   No           N/A                     N/A                      
+NIC               eth0                 1.38         1.38         NONE       NONE        Yes          331FLR                  N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+Power_Mgmt_Ctlr   N/A                  3.3          3.3          NONE       NONE        Yes          N/A                     N/A                      
+SERVER_HDD        PWHVDHBD             HPDA         HPDA         NONE       NONE        Yes          PORT:1I BOX:2 BAY:1     Ctlr:001438021117410     
+SERVER_HDD        PWHXAXED             HPDA         HPDA         NONE       NONE        Yes          PORT:1I BOX:2 BAY:2     Ctlr:001438021117410     
+Smart_Array_Ctlr  001438021117410      5.42         5.42         NONE       NONE        Yes          P420i                   Serv:USE303TCNE          
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+]0;root@ftc8-3s1:/opt/hp/platform/fmt/etc[root@ftc8-3s1 etc]# hpsp_fmt -f -c ILO4 --force
+You have provided force option which will rewrite or downgrade the firmware
+Do you want to proceed (Y/N)?y
+Flashing ILO4: Based on the configuration, it may take 10 minutes.
+In progress...  |/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/     <<< Succeeded >>>
+
+----------------------------------------------------------------------------------------------------
+Device                        :ILO4                                                                 
+Status                        :Success                                                              
+Code                          :0x1000                                                               
+SUCCESS                       :Flash succeeded for Integrated Lights-Out (iLO) 4 using              
+                               CP023646.scexe                                                       
+Reboot Required               :No                                                                   
+Coordinated Reboot Required   :No                                                                   
+----------------------------------------------------------------------------------------------------
+
+
+
+SUMMARY:
+----------------------------------------------------------------------------------------------------
+Device            Description                   Reboot Flash Status            
+                                                Reqd.                          
+----------------------------------------------------------------------------------------------------
+ILO4              Integrated Lights-Out (iLO) 4  No    Success                 
+
+----------------------------------------------------------------------------------------------------
+
+]0;root@ftc8-3s1:/opt/hp/platform/fmt/etc[root@ftc8-3s1 etc]# vi repository.xml
+[?1049h[?1h=[1;52r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[52;1H"repository.xml" [New File][2;1H[1m[34m~                                                                                                                                                                                [3;1H~                                                                                                                                                                                [4;1H~                                                                                                                                                                                [5;1H~                                                                                                                                                                                [6;1H~                                                                                                                                                                                [7;1H~                                                                                                                                                                                [8;1H~                                                                                                                                                                                [9;1H~                                                                                                                                                                                [10;1H~                                                                                                                                                                                [11;1H~                                                                                                                                                                                [12;1H~                                                                                                                                                                                [13;1H~                                                                                                                                                                                [14;1H~                                                                                                                                                                                [15;1H~                                                                                                                                                                                [16;1H~                                                                                                                                                                                [17;1H~                                                                                                                                                                                [18;1H~                                                                                                                                                                                [19;1H~                                                                                                                                                                                [20;1H~                                                                                                                                                                                [21;1H~                                                                                                                                                                                [22;1H~                                                                                                                                                                                [23;1H~                                                                                                                                                                                [24;1H~                                                                                                                                                                                [25;1H~                                                                                                                                                                                [26;1H~                                                                                                                                                                                [27;1H~                                                                                                                                                                                [28;1H~                                                                                                                                                                                [29;1H~                                                                                                                                                                                [30;1H~                                                                                                                                                                                [31;1H~                                                                                                                                                                                [32;1H~                                                                                                                                                                                [33;1H~                                                                                                                                                                                [34;1H~                                                                                                                                                                                [35;1H~                                                                                                                                                                                [36;1H~                                                                                                                                                                                [37;1H~                                                                                                                                                                                [38;1H~                                                                                                                                                                                [39;1H~                                                                                                                                                                                [40;1H~                                                                                                                                                                                [41;1H~                                                                                                                                                                                [42;1H~                                                                                                                                                                                [43;1H~                                                                                                                                                                                [44;1H~                                                                                                                                                                                [45;1H~                                                                                                                                                                                [46;1H~                                                                                                                                                                                [47;1H~                                                                                                                                                                                [48;1H~                                                                                                                                                                                [49;1H~                                                                                                                                                                                [50;1H~                                                                                                                                                                                [51;1H~                                                                                                                                                                                [1;1H[?12l[?25h[?25l[m[52;1H[1m-- INSERT --[m[52;13H[K[1;1H[?12l[?25h[?25l:[?12l[?25h[?25lq[?12l[?25h[?25l![?12l[?25h[?25l[1;3H[K[1;3H[?12l[?25h[?25l[1;2H[K[1;2H[?12l[?25h[?25l[1;1H[K[1;1H[?12l[?25h[52;1H[K[1;1H[?25l[?12l[?25h[?25l[52;1H:[?12l[?25hq1[?25l:q[52;3H[K[52;3H[?12l[?25h![?25l[52;1H[K[52;1H[?1l>[?12l[?25h[?1049l]0;root@ftc8-3s1:/opt/hp/platform/fmt/etc[root@ftc8-3s1 etc]# vi repository.xmlhpsp_fmt -f -c ILO4 --forcer[Kvi Repository.xml ls[Kvi Repository.xml 
+[?1049h[?1h=[1;52r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[52;1H"Repository.xml" "Repository.xml" 299L, 12839C[1;1H<?xml version="1.0" encoding="UTF-8" standalone="no"?><ns2:repository xmlns:ns2="http://www.example.org/RepositoryXMLSchema" xmlns:ns0="http://www.example.org/RepositoryXMLSchemm[2;1Ha">[34m^M[m
+    <recipeVersion>9.05.20210315034804</recipeVersion>[34m^M[m
+    <minToolVersion>6.00</minToolVersion>[34m^M[m
+    <version>1.0.4</version>[34m^M[m
+    <productName>G8 8200</productName>[34m^M[m
+    <filePath>/etc/opt/hp/platform/firmware/Repository.xml</filePath>[34m^M[m
+    <flashOnBoot>false</flashOnBoot>[34m^M[m
+    <openState>false</openState>[34m^M[m
+<Server>[34m^M[m[11;9H<Component>[34m^M[m[12;9H<filename>CP023646.scexe</filename>[34m^M[m[13;9H<shortName>ILO4</shortName>[34m^M[m[14;9H<name>Integrated Lights-Out (iLO) 4</name>[34m^M[m[15;9H<version>1.51</version>[34m^M[m[16;9H<minFwVersion>1.51</minFwVersion>[34m^M[m[17;9H<sharedComponent>false</sharedComponent>[34m^M[m[18;13H<discoverDuration>1</discoverDuration>[34m^M[m[19;9H<flashDuration>10</flashDuration>[34m^M[m[20;9H<flashActionSeverity>MANDATORY</flashActionSeverity>[34m^M[m[21;9H<coordinatedReboot>false</coordinatedReboot>[34m^M[m[22;9H<requiresLock>false</requiresLock>[34m^M[m[23;9H<requiresReboot>false</requiresReboot>[34m^M[m[24;9H<dependentDrivers>[34m^M[m[25;13H<driversListType>ALL</driversListType>[34m^M[m[26;13H<driver>[34m^M[m[27;17H<name>hpilo</name>[34m^M[m[28;13H</driver>[34m^M[m[29;9H</dependentDrivers>[34m^M[m[30;9H<componentClass>ILO</componentClass>[34m^M[m
+    </Component>[34m^M[m
+    <Component>[34m^M[m[33;9H<filename>CP022891.scexe</filename>[34m^M[m[34;9H<name>BIOS</name>[34m^M[m[35;9H<shortName>BIOS</shortName>[34m^M[m[36;9H<version>P70 02/10/2014</version> <!-- version is in the format MM/DD/YYYY -->[34m^M[m[37;9H<minFwVersion>P70 02/10/2014</minFwVersion>[34m^M[m[38;9H<sharedComponent>false</sharedComponent>[34m^M[m[39;9H<flashDuration>5</flashDuration>[34m^M[m[40;9H<flashActionSeverity>MANDATORY</flashActionSeverity>[34m^M[m[41;13H<discoverDuration>1</discoverDuration>[34m^M[m[42;9H<coordinatedReboot>false</coordinatedReboot>[34m^M[m[43;9H<requiresLock>false</requiresLock>[34m^M[m[44;9H<requiresReboot>true</requiresReboot>[34m^M[m[45;9H<componentClass>BIOS</componentClass>[34m^M[m
+    </Component>[34m^M[m
+    <Component>[34m^M[m[48;9H<filename>CP021615.scexe</filename>[34m^M[m[49;9H<name>Power Management Controller</name>[34m^M[m[50;9H<shortName>Power_Mgmt_Ctlr</shortName>[34m^M[m[51;9H<version>3.3</version>[34m^M[1;1H[?12l[?25h[?25l[m[52;1H[K[52;1H:[?12l[?25hq![?25l[52;1H[K[52;1H[?1l>[?12l[?25h[?1049l]0;root@ftc8-3s1:/opt/hp/platform/fmt/etc[root@ftc8-3s1 etc]# login as: root
+root@10.8.3.1's password: 
+Last login: Fri Apr 23 04:22:16 2021 from 10.5.250.6
+]0;root@ftc8-3s1:~[root@ftc8-3s1 ~]# hpi[K[K[Khpsp_fmt -fr
+Since no category argument is specified, operation will be performed on server components...
+Based on the configuration, Flash recommendation may take 5 minutes.
+In progress...  |/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/-\|/     <<< Completed >>>
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+Device            Device ID            Active FW    Qualified    Proposed   Severity    Reboot Reqd. Device Information      Parent Device ID         
+                                       Version      FW Version   Action                 on Flash                                                      
+---------------------------------------------------------------------------------------------------------------------------------------------------
+BIOS              USE303TCNE           P70          P70          NONE       NONE        Yes          N/A                     N/A                      
+                                       (02/10/2014) (02/10/2014)                                                                                      
+ILO4              ILOUSE303TCNE        1.51         1.51         NONE       NONE        No           N/A                     N/A                      
+NIC               eth0                 1.38         1.38         NONE       NONE        Yes          331FLR                  N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+PCIeNIC           N/A                  4.9.311.25   4.9.311.25   NONE       NONE        Yes          NC552SFP                N/A                      
+Power_Mgmt_Ctlr   N/A                  3.3          3.3          NONE       NONE        Yes          N/A                     N/A                      
+SERVER_HDD        PWHVDHBD             HPDA         HPDA         NONE       NONE        Yes          PORT:1I BOX:2 BAY:1     Ctlr:001438021117410     
+SERVER_HDD        PWHXAXED             HPDA         HPDA         NONE       NONE        Yes          PORT:1I BOX:2 BAY:2     Ctlr:001438021117410     
+Smart_Array_Ctlr  001438021117410      5.42         5.42         NONE       NONE        Yes          P420i                   Serv:USE303TCNE          
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+]0;root@ftc8-3s1:~[root@ftc8-3s1 ~]# login as: root
+root@10.8.3.1's password: 
+Access denied
+root@10.8.3.1's password: 
+Last login: Fri Apr 23 06:19:52 2021
+]0;root@ftc8-3s1:~[root@ftc8-3s1 ~]# ibrix[K[K[K[K[Kifconfig
+bond0     Link encap:Ethernet  HWaddr 6C:3B:E5:C1:53:B8  
+          inet addr:10.8.3.1  Bcast:10.8.3.255  Mask:255.255.255.0
+          inet6 addr: fd58:eb4f:d105:38:6e3b:e5ff:fec1:53b8/64 Scope:Global
+          inet6 addr: fe80::6e3b:e5ff:fec1:53b8/64 Scope:Link
+          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1
+          RX packets:243 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:151 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:30227 (29.5 KiB)  TX bytes:14300 (13.9 KiB)
+
+bond0:0   Link encap:Ethernet  HWaddr 6C:3B:E5:C1:53:B8  
+          inet addr:10.8.3.109  Bcast:10.8.3.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MASTER MULTICAST  MTU:1500  Metric:1
+
+eth4      Link encap:Ethernet  HWaddr 6C:3B:E5:C1:53:B8  
+          UP BROADCAST RUNNING SLAVE MULTICAST  MTU:1500  Metric:1
+          RX packets:198 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:153 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:27125 (26.4 KiB)  TX bytes:14768 (14.4 KiB)
+          Memory:fbfc0000-fbfe0000 
+
+eth5      Link encap:Ethernet  HWaddr 6C:3B:E5:C1:53:B8  
+          UP BROADCAST RUNNING SLAVE MULTICAST  MTU:1500  Metric:1
+          RX packets:45 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:3102 (3.0 KiB)  TX bytes:0 (0.0 b)
+          Memory:fbf60000-fbf80000 
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:38974 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:38974 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:3033277 (2.8 MiB)  TX bytes:3033277 (2.8 MiB)
+
+]0;root@ftc8-3s1:~[root@ftc8-3s1 ~]# ip add
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 16436 qdisc noqueue 
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+10: sit0: <NOARP> mtu 1480 qdisc noop 
+    link/sit 0.0.0.0 brd 0.0.0.0
+28: eth4: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master bond0 qlen 1000
+    link/ether 6c:3b:e5:c1:53:b8 brd ff:ff:ff:ff:ff:ff
+29: eth0: <BROADCAST,MULTICAST> mtu 1500 qdisc pfifo_fast qlen 1000
+    link/ether ac:16:2d:72:23:54 brd ff:ff:ff:ff:ff:ff
+30: eth1: <BROADCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+    link/ether ac:16:2d:72:23:55 brd ff:ff:ff:ff:ff:ff
+31: eth2: <BROADCAST,MULTICAST> mtu 1500 qdisc pfifo_fast qlen 1000
+    link/ether ac:16:2d:72:23:56 brd ff:ff:ff:ff:ff:ff
+32: eth3: <BROADCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+    link/ether ac:16:2d:72:23:57 brd ff:ff:ff:ff:ff:ff
+33: eth5: <BROADCAST,MULTICAST,SLAVE,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast master bond0 qlen 1000
+    link/ether 6c:3b:e5:c1:53:b8 brd ff:ff:ff:ff:ff:ff
+34: eth6: <BROADCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+    link/ether a0:d3:c1:c7:50:58 brd ff:ff:ff:ff:ff:ff
+35: eth7: <BROADCAST,MULTICAST> mtu 1500 qdisc noop qlen 1000
+    link/ether a0:d3:c1:c7:50:5c brd ff:ff:ff:ff:ff:ff
+36: bond0: <BROADCAST,MULTICAST,MASTER,UP,LOWER_UP> mtu 1500 qdisc noqueue 
+    link/ether 6c:3b:e5:c1:53:b8 brd ff:ff:ff:ff:ff:ff
+    inet 10.8.3.1/24 brd 10.8.3.255 scope global bond0
+    inet 10.8.3.109/24 brd 10.8.3.255 scope global secondary bond0:0
+    inet6 fd58:eb4f:d105:38:6e3b:e5ff:fec1:53b8/64 scope global dynamic 
+       valid_lft 86232sec preferred_lft 3432sec
+    inet6 fe80::6e3b:e5ff:fec1:53b8/64 scope link 
+       valid_lft forever preferred_lft forever
+]0;root@ftc8-3s1:~[root@ftc8-3s1 ~]# 
